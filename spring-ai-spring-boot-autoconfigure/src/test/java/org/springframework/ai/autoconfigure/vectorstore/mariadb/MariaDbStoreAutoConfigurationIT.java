@@ -39,6 +39,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.testcontainers.containers.MariaDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -53,10 +54,11 @@ import static org.springframework.ai.autoconfigure.vectorstore.observation.Obser
  */
 @Testcontainers
 public class MariaDbStoreAutoConfigurationIT {
-
+	public static final DockerImageName DEFAULT_IMAGE = DockerImageName
+			.parse("quay.io/repository/mariadb-foundation/mariadb-devel?tab=tags&tag=11.7");
 	@Container
 	@SuppressWarnings("resource")
-	static MariaDBContainer<?> mariadbContainer = new MariaDBContainer<>("mariadb:11.7");
+	static MariaDBContainer<?> mariadbContainer = new MariaDBContainer<>(DEFAULT_IMAGE);
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
 		.withConfiguration(AutoConfigurations.of(MariaDbStoreAutoConfiguration.class,

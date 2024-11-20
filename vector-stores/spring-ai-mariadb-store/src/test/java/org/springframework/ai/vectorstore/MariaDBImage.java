@@ -24,6 +24,6 @@ import org.testcontainers.utility.DockerImageName;
 public class MariaDBImage {
 
 	public static final DockerImageName DEFAULT_IMAGE = DockerImageName
-		.parse("quay.io/repository/mariadb-foundation/mariadb-devel?tab=tags&tag=11.6-vector-preview");
+		.parse("quay.io/repository/mariadb-foundation/mariadb-devel?tab=tags&tag=11.7");
 
 }
